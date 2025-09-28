@@ -1,0 +1,81 @@
+Relatório Simplificado – Índice de Adequação do Café
+1. O que é o índice?
+
+O índice é um número entre 0 e 1 que representa o quão boas são as condições de solo e clima para o café.
+
+1,0 (100%) = condições perfeitas.
+
+0,0 (0%) = condições totalmente inadequadas.
+
+Esse índice pode depois ser transformado em uma estimativa de produtividade. Por exemplo:
+
+1,0 → 60 sacas/hectare (máximo).
+
+0,5 → ~30 sacas/hectare.
+
+Abaixo de 0,33 → considerado inviável (zera produção).
+
+2. Como o índice é calculado?
+
+Ele junta várias variáveis importantes para o café:
+
+N (Nitrogênio)
+
+P (Fósforo)
+
+K (Potássio)
+
+Temperatura do ar
+
+Umidade relativa
+
+pH do solo
+
+Chuva (mm/mês)
+
+Cada variável tem uma faixa ideal (onde o café cresce bem) e uma faixa aceitável (onde ainda é possível, mas com perda).
+Exemplo:
+
+Temperatura ideal: 22–26 °C
+
+Aceitável: 20–30 °C
+
+Se os valores estão dentro da faixa ideal, a nota é 1. Se estão fora, a nota vai caindo até 0.
+
+3. Penalidades
+
+Além do índice base, aplicamos “descontos” quando duas condições ruins acontecem juntas. Por exemplo:
+
+pH muito alto + pouco fósforo → a planta não consegue absorver nutrientes.
+
+Chuva demais + pouco potássio → nutrientes são lavados do solo.
+
+Temperatura alta + ar seco → a planta entra em estresse.
+
+Chuva e umidade muito altas → aumenta risco de doenças.
+
+Muito nitrogênio + pouco potássio → crescimento desbalanceado.
+
+Essas penalidades reduzem no máximo 25% do índice final.
+
+4. O que fazemos com esse índice?
+
+Primeiro, geramos o índice para cada linha do nosso banco de dados.
+
+Depois, usamos o índice como “alvo” para treinar um modelo de machine learning (Random Forest).
+
+O Random Forest aprende as relações entre os nutrientes, clima e o índice.
+
+Assim, conseguimos prever o índice (e a produtividade em sacas) para novos dados de solo e clima.
+
+5. Exemplo prático
+
+Entrada:
+
+N = 100, P = 25, K = 30
+
+Temperatura = 25 °C, Umidade = 60%, pH = 6,5, Chuva = 150 mm
+
+Índice previsto = 0,87
+
+Produtividade estimada = 52 sacas/hectare
